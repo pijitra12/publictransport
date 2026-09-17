@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ค้นหาเส้นทาง — ไปไหนดี</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Sans+Thai:wght@400;500;600&family=Noto+Serif+Thai:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="side">
+    <div class="brand"><img src="images/logo.png" alt="ไปไหนดี — ค้นหาเส้นทางรถไฟฟ้าและรถเมล์"></div>
+    <div class="brand-sub">ระบบวางแผนเดินทางสาธารณะ (ตัวอย่างสาธิต)</div>
+    <nav>
+      <a href="index.html" class="active"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="2"/><line x1="16" y1="16" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="label-text">ค้นหาเส้นทาง</span></a>
+      <a href="#" class="disabled" id="navResults"><svg viewBox="0 0 24 24" fill="none"><circle cx="5" cy="6" r="1.6" fill="currentColor"/><line x1="10" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="5" cy="12" r="1.6" fill="currentColor"/><line x1="10" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="5" cy="18" r="1.6" fill="currentColor"/><line x1="10" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="label-text">เลือกเส้นทาง</span></a>
+      <a href="#" class="disabled" id="navTicket"><svg viewBox="0 0 24 24" fill="none"><path d="M3 9a2 2 0 0 1 0 4v3a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-3a2 2 0 0 1 0-4V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><line x1="14" y1="5" x2="14" y2="19" stroke="currentColor" stroke-width="1.6" stroke-dasharray="2 2"/></svg><span class="label-text">รายละเอียด + ตั๋ว</span></a>
+      <a href="favorites.html" id="navFav"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 20s-7.5-4.6-10-9.3C0.3 7.4 2 4 5.4 4c2 0 3.4 1 4.6 2.6C11.2 5 12.6 4 14.6 4 18 4 19.7 7.4 18 10.7 19.5 15.4 12 20 12 20z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><span class="label-text">เส้นทางโปรด</span></a>
+    </nav>
+    <div class="skyline-art" id="skylineArt"></div>
+    <div class="footnote">เดินทางสะดวก<br>ชีวิตง่ายขึ้น</div>
+  </aside>
+
+  <main>
+    <div class="hero-panel">
+      <div class="hero-text">
+        <div class="kicker">วางแผนการเดินทาง</div>
+        <h1>วันนี้จะไปไหน?</h1>
+        <p>ค้นหาเส้นทางรถไฟฟ้าและรถเมล์ พร้อมเวลาและค่าโดยสารโดยประมาณ เพื่อการเดินทางที่สะดวกและคุ้มค่าที่สุด</p>
+        <div class="mode-tabs" id="modeTabs">
+          <div class="mode-tab active" data-mode="all"><span class="tab-icon"></span><div>รถไฟฟ้า + รถเมล์</div></div>
+          <div class="mode-tab" data-mode="rail"><span class="tab-icon"></span><div>รถไฟฟ้าอย่างเดียว</div></div>
+          <div class="mode-tab" data-mode="bus"><span class="tab-icon"></span><div>รถเมล์อย่างเดียว</div></div>
+          <div class="mode-tab" data-mode="popular"><span class="tab-icon"></span><div>เส้นทางยอดนิยม</div></div>
+        </div>
+      </div>
+      <div class="hero-art-wrap" id="heroArt"></div>
+    </div>
+
+    <div class="panel search-card">
+      <div class="trip-form">
+        <div class="stop-field origin" id="originField">
+          <div class="dot"></div>
+          <div class="text">
+            <div class="label">ต้นทาง</div>
+            <div class="value placeholder" id="originValue">เลือกสถานีหรือป้ายต้นทาง</div>
+          </div>
+        </div>
+        <div class="field-connector">
+          <button class="swap-btn" id="swapBtn" title="สลับต้นทาง-ปลายทาง"></button>
+        </div>
+        <div class="stop-field dest" id="destField">
+          <div class="dot"></div>
+          <div class="text">
+            <div class="label">ปลายทาง</div>
+            <div class="value placeholder" id="destValue">เลือกสถานีหรือป้ายปลายทาง</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="suggestion-chips" id="suggestionChips"></div>
+
+      <div class="schedule-row">
+        <div class="schedule-field">
+          <span class="sched-icon" id="dateIcon"></span>
+          <div class="text">
+            <div class="label">วันที่เดินทาง</div>
+            <div class="value" id="dateValue">วันนี้</div>
+          </div>
+        </div>
+        <div class="schedule-field">
+          <span class="sched-icon" id="clockIcon"></span>
+          <div class="text">
+            <div class="label">เวลา</div>
+            <div class="value">ออกเดินทางตอนนี้</div>
+          </div>
+        </div>
+      </div>
+      <div class="schedule-note">ระบบตัวอย่างนี้คำนวณเวลา/ราคาแบบเดียวกันทุกช่วงเวลา ยังไม่รองรับตารางเวลาจริงตามนาฬิกา</div>
+
+      <button class="primary big" id="searchBtn" disabled>ค้นหาเส้นทาง</button>
+    </div>
+
+    <div class="popular-section" id="popularSection">
+      <div class="popular-header">
+        <h3>เส้นทางยอดนิยม</h3>
+      </div>
+      <div class="popular-grid" id="popularGrid"></div>
+    </div>
+
+    <details class="reveal">
+      <summary>สำหรับทำรายงาน: หลักการ Tree ที่ใช้ในหน้านี้</summary>
+      <div class="reveal-body">
+        <p style="color:var(--text-dim);font-size:0.88rem">
+          ตัวเลือกสถานีจัดเป็น Tree 4 ระดับ: ทุกระบบขนส่ง (Root) → ประเภท (รถไฟฟ้า/รถเมล์) → สาย → สถานี/ป้าย (Leaf)
+          หน้าต่างเลือกสถานีไล่ตามโครงสร้างนี้จริง ไม่ได้เขียนรายการสถานีแยกไว้ต่างหาก
+        </p>
+        <div class="code-block" id="codeBlock"></div>
+      </div>
+    </details>
+  </main>
+</div>
+
+<!-- Station picker (Tree browser) -->
+<div class="picker-overlay hidden" id="pickerOverlay">
+  <div class="picker-modal">
+    <div class="picker-header">
+      <h3 id="pickerTitle">เลือกสถานี</h3>
+      <button class="picker-close" id="pickerClose">&times;</button>
+    </div>
+    <div class="picker-breadcrumb" id="pickerBreadcrumb"></div>
+    <div class="picker-list" id="pickerList"></div>
+  </div>
+</div>
+
+<script src="transit-data.js"></script>
+<script src="station-tree.js"></script>
+<script src="icons.js"></script>
+<script src="index-app.js"></script>
+</body>
+</html>

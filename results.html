@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เลือกเส้นทาง — ไปไหนดี</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Sans+Thai:wght@400;500;600&family=Noto+Serif+Thai:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="side">
+    <div class="brand"><img src="images/logo.png" alt="ไปไหนดี — ค้นหาเส้นทางรถไฟฟ้าและรถเมล์"></div>
+    <div class="brand-sub">ระบบวางแผนเดินทางสาธารณะ (ตัวอย่างสาธิต)</div>
+    <nav>
+      <a href="index.html"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="2"/><line x1="16" y1="16" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="label-text">ค้นหาเส้นทาง</span></a>
+      <a href="results.html" class="active"><svg viewBox="0 0 24 24" fill="none"><circle cx="5" cy="6" r="1.6" fill="currentColor"/><line x1="10" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="5" cy="12" r="1.6" fill="currentColor"/><line x1="10" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="5" cy="18" r="1.6" fill="currentColor"/><line x1="10" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="label-text">เลือกเส้นทาง</span></a>
+      <a href="#" class="disabled" id="navTicket"><svg viewBox="0 0 24 24" fill="none"><path d="M3 9a2 2 0 0 1 0 4v3a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-3a2 2 0 0 1 0-4V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><line x1="14" y1="5" x2="14" y2="19" stroke="currentColor" stroke-width="1.6" stroke-dasharray="2 2"/></svg><span class="label-text">รายละเอียด + ตั๋ว</span></a>
+      <a href="favorites.html" id="navFav"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 20s-7.5-4.6-10-9.3C0.3 7.4 2 4 5.4 4c2 0 3.4 1 4.6 2.6C11.2 5 12.6 4 14.6 4 18 4 19.7 7.4 18 10.7 19.5 15.4 12 20 12 20z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><span class="label-text">เส้นทางโปรด</span></a>
+    </nav>
+    <div class="footnote" id="routeSummaryFoot"></div>
+  </aside>
+
+  <main id="mainContent"></main>
+</div>
+
+<script src="transit-data.js"></script>
+<script src="station-tree.js"></script>
+<script src="station-map.js"></script>
+<script src="icons.js"></script>
+<script src="saved-routes.js"></script>
+<script src="save-modal.js"></script>
+<script src="results-app.js"></script>
+</body>
+</html>
